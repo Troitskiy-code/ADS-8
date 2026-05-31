@@ -29,18 +29,18 @@ private:
         return node;
     }
 
-    bool search(Node* node, const T& key) const {
-        if (!node) return false;
+    int search(Node* node, const T& key) const {
+        if (!node) return 0;
         if (key < node->key)
             return search(node->left, key);
         else if (key > node->key)
             return search(node->right, key);
         else
-            return true;
+            return node->count;
     }
 
     int depth(Node* node) const {
-        if (!node) return 0;
+        if (!node) return -1;
         return 1 + std::max(depth(node->left), depth(node->right));
     }
 
@@ -63,7 +63,7 @@ public:
     ~BST() { clear(root); }
 
     void insert(const T& key) { root = insert(root, key); }
-    bool search(const T& key) const { return search(root, key); }
+    int search(const T& key) const { return search(root, key); }
     int depth() const { return depth(root); }
 
     std::vector<std::pair<T, int>> getFrequencyList() const {
