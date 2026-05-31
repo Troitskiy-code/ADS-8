@@ -11,9 +11,11 @@ int main() {
     makeTree(tree, "src/war_peace.txt");
 
     std::cout << "Tree depth: " << tree.depth() << std::endl;
-    std::cout << "'war' found: " << (tree.search("war") ? "yes" : "no") << std::endl;
-    std::cout << "'peace' found: " << (tree.search("peace") ? "yes" : "no") << std::endl;
-    std::cout << "Frequencies:\n";
+    int warFreq = tree.search("war");
+    int peaceFreq = tree.search("peace");
+    std::cout << "'war' frequency: " << warFreq << std::endl;
+    std::cout << "'peace' frequency: " << peaceFreq << std::endl;
+    std::cout << "All frequencies:\n";
     printFreq(tree);
     return 0;
 }
